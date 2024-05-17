@@ -13,10 +13,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class HotelSearchCriteriaDTO {
 
-    private String destination;
+    private String country;
+    private String city;
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
-    private int numberOfRooms;
     private int numberOfGuests;
 
 }

@@ -52,10 +52,10 @@ public class HotelService {
 
     public Flux<Hotel> findHotelsByCriteria(HotelSearchCriteriaDTO criteria) {
         return customHotelRepository.searchHotels(
-                criteria.getDestination(),
+                criteria.getCountry(),
+                criteria.getCity(),
                 criteria.getCheckInDate(),
                 criteria.getCheckOutDate(),
-                criteria.getNumberOfRooms(),
                 criteria.getNumberOfGuests()
         );
     }

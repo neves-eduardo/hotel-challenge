@@ -16,20 +16,20 @@ public class CustomHotelRepository {
 
     private final ReactiveMongoTemplate mongoTemplate;
 
-    public Flux<Hotel> searchHotels(String destination, LocalDate checkInDate, LocalDate checkOutDate, Integer numberOfRooms, Integer numberOfGuests) {
+    public Flux<Hotel> searchHotels(String country, String city, LocalDate checkInDate, LocalDate checkOutDate, Integer numberOfGuests) {
         Criteria criteria = new Criteria();
 
-        if (destination != null && !destination.isEmpty()) {
-            criteria.and("destination").is(destination);
+        if (country != null && !country.isEmpty()) {
+            criteria.and("location.country").is(country);
+        }
+        if (city != null && !city.isEmpty()) {
+            criteria.and("location.city").is(city);
         }
         if (checkInDate != null) {
-            criteria.and("availability.startDate").lte(checkInDate);
+            criteria.and("rooms.availability.checkIn").lte(checkInDate);
         }
         if (checkOutDate != null) {
-            criteria.and("availability.endDate").gte(checkOutDate);
-        }
-        if (numberOfRooms != null && numberOfRooms > 0) {
-            criteria.and("rooms.available").gte(numberOfRooms);
+            criteria.and("rooms.availability.checkOut").gte(checkOutDate);
         }
         if (numberOfGuests != null && numberOfGuests > 0) {
             criteria.and("rooms.capacity").gte(numberOfGuests);
