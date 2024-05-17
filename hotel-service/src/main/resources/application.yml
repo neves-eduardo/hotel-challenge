@@ -1,0 +1,9 @@
+server:
+  port : 8080
+
+spring:
+  application:
+    name: hotel-service
+  data:
+    mongodb:
+      uri: mongodb://admin:admin@localhost:27017/hotel?authSource=admin
