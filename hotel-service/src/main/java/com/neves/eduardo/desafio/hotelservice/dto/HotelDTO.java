@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class HotelDTO {
 
+    private String id;
     private String name;
     private HotelLocationDTO location;
     private List<HotelRoomDTO> rooms;
