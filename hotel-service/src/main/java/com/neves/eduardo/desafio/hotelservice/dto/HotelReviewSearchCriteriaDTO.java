@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class HotelReviewSearchCriteriaDTO {
 
-    private Double reviewsFrom;
-    private Double reviewsTo;
+    private Double averageRatingFrom;
+    private Double averageRatingTo;
 
 }

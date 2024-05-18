@@ -37,8 +37,8 @@ public class HotelController {
         return hotelService.deleteHotel(id);
     }
 
-    @GetMapping("/search")
-    public Flux<Hotel> findHotelsByCriteria(HotelSearchCriteriaDTO criteria) {
+    @PostMapping("/search")
+    public Flux<Hotel> findHotelsByCriteria(@RequestBody HotelSearchCriteriaDTO criteria) {
         return hotelService.findHotelsByCriteria(criteria);
     }
 

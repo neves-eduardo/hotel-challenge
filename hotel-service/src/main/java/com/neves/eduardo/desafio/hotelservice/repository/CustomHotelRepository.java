@@ -10,8 +10,6 @@ import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Repository
 @RequiredArgsConstructor
@@ -37,15 +35,6 @@ public class CustomHotelRepository {
             criteria.and("rooms.amenities").in(criteriaDTO.getAmenities());
         }
 
-        if (criteriaDTO.getHotelAvailabilityDateCriteria() != null) {
-            LocalDateTime checkInDate = criteriaDTO.getHotelAvailabilityDateCriteria().getCheckInDate();
-            LocalDateTime checkOutDate = criteriaDTO.getHotelAvailabilityDateCriteria().getCheckOutDate();
-            if (checkInDate != null && checkOutDate != null) {
-                criteria.and("reservations.checkInDate").gte(checkOutDate)
-                        .orOperator(Criteria.where("reservations.checkOutDate").lte(checkInDate));
-            }
-        }
-
         if (criteriaDTO.getHotelPriceSearchCriteria() != null) {
             BigDecimal minPrice = criteriaDTO.getHotelPriceSearchCriteria().getMinimumPrice();
             BigDecimal maxPrice = criteriaDTO.getHotelPriceSearchCriteria().getMinimumPrice();
@@ -54,6 +43,17 @@ public class CustomHotelRepository {
             }
             if (maxPrice != null) {
                 criteria.and("rooms.price").lte(maxPrice);
+            }
+        }
+
+        if (criteriaDTO.getHotelReviewSearchCriteria() != null) {
+            Double averageRatingFrom = criteriaDTO.getHotelReviewSearchCriteria().getAverageRatingFrom();
+            Double averageRatingTo = criteriaDTO.getHotelReviewSearchCriteria().getAverageRatingTo();
+            if (averageRatingFrom != null) {
+                criteria.and("averageRating").gte(averageRatingFrom);
+            }
+            if (averageRatingTo != null) {
+                criteria.lte(averageRatingTo);
             }
         }
 
