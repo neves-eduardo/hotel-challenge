@@ -1,8 +1,5 @@
 package com.neves.eduardo.desafio.hotelservice.dto;
 
-import com.neves.eduardo.desafio.hotelservice.entity.HotelLocation;
-import com.neves.eduardo.desafio.hotelservice.entity.HotelReview;
-import com.neves.eduardo.desafio.hotelservice.entity.HotelRoom;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
