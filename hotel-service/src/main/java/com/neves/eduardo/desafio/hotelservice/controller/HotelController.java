@@ -1,6 +1,7 @@
 package com.neves.eduardo.desafio.hotelservice.controller;
 
 import com.neves.eduardo.desafio.hotelservice.dto.HotelDTO;
+import com.neves.eduardo.desafio.hotelservice.dto.HotelReviewDTO;
 import com.neves.eduardo.desafio.hotelservice.dto.HotelSearchCriteriaDTO;
 import com.neves.eduardo.desafio.hotelservice.entity.Hotel;
 import com.neves.eduardo.desafio.hotelservice.service.HotelService;
@@ -41,9 +42,9 @@ public class HotelController {
         return hotelService.findHotelsByCriteria(criteria);
     }
 
-    @GetMapping("near")
-    public Flux<HotelDTO> findAllHotelsNear(@RequestParam Double longitude, @RequestParam Double latitude, @RequestParam(required = false) Double maxDistance) {
-        return hotelService.findHotelNear(longitude, latitude, maxDistance);
+    @PostMapping("/{id}/reviews")
+    public Mono<HotelDTO> createReview(@PathVariable String id, @RequestBody HotelReviewDTO reviewDTO) {
+        return hotelService.createHotelRating(id, reviewDTO);
     }
 
 }

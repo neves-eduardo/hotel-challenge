@@ -19,5 +19,6 @@ public class HotelRoomDTO {
     private Integer capacity;
     private BigDecimal price;
     private List<HotelRoomAvailabilityDTO> availability;
+    private List<String> roomAmenities;
 
 }

@@ -18,5 +18,6 @@ public class HotelRoom {
     private Integer capacity;
     private BigDecimal price;
     private List<HotelRoomAvailability> availability;
+    private List<String> roomAmenities;
 
 }

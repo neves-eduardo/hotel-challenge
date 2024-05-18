@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Builder
@@ -15,8 +16,10 @@ public class HotelSearchCriteriaDTO {
 
     private String country;
     private String city;
-    private LocalDate checkInDate;
-    private LocalDate checkOutDate;
-    private int numberOfGuests;
+    private Integer numberOfGuests;
+    private List<String> amenities;
+    private HotelAvailabilityDateCriteriaDTO hotelAvailabilityDateCriteria;
+    private HotelPriceSearchCriteriaDTO hotelPriceSearchCriteria;
+    private HotelReviewSearchCriteriaDTO hotelReviewSearchCriteria;
 
 }

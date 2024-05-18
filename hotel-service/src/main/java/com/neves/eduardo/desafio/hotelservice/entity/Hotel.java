@@ -11,7 +11,7 @@ import java.util.List;
 
 @Document(collection = "hotels")
 @Data
-@Builder
+@Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Hotel {
@@ -22,5 +22,7 @@ public class Hotel {
     private HotelLocation location;
     private List<HotelRoom> rooms;
     private List<String> amenities;
+    private List<HotelReview> reviews;
+    private Double averageRating;
 
 }

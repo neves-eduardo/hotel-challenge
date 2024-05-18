@@ -1,6 +1,7 @@
 package com.neves.eduardo.desafio.hotelservice.dto;
 
 import com.neves.eduardo.desafio.hotelservice.entity.HotelLocation;
+import com.neves.eduardo.desafio.hotelservice.entity.HotelReview;
 import com.neves.eduardo.desafio.hotelservice.entity.HotelRoom;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,5 +21,7 @@ public class HotelDTO {
     private HotelLocationDTO location;
     private List<HotelRoomDTO> rooms;
     private List<String> amenities;
+    private List<HotelReviewDTO> reviews;
+    private Double averageRating;
 
 }
