@@ -30,42 +30,65 @@ public class HotelService {
     private final CustomHotelRepository customHotelRepository;
 
     public Mono<HotelDTO> create(HotelDTO hotelDTO) {
-        log.info("[hotel-service] [service] creating a new hotel.");
+        log.info("[hotel-service] [service] Creating a new hotel.");
         Hotel hotelEntity = hotelDTOtoHotelEntityConverter.map(hotelDTO);
-        log.info("[hotel-service] [service] saving a new hotel.");
 
-        return repository.save(hotelEntity).map(hotelEntityToHotelDTO::map);
+        return repository.save(hotelEntity)
+                .map(hotelEntityToHotelDTO::map)
+                .doOnSuccess(savedHotel -> log.info("[hotel-service] [service] Hotel created successfully."))
+                .doOnError(error -> log.error("[hotel-service] [service] Error creating hotel.", error));
     }
 
     public Mono<HotelDTO> find(String id) {
-        log.info(String.format("[hotel-service] [service] finding hotel by id [%s].", id));
-        return repository.findById(id).map(hotelEntityToHotelDTO::map);
+        log.info("[hotel-service] [service] Finding hotel by id [{}].", id);
+
+        return repository.findById(id)
+                .map(hotelEntityToHotelDTO::map)
+                .switchIfEmpty(Mono.error(new RuntimeException("Hotel not found")))
+                .doOnSuccess(hotel -> log.info("[hotel-service] [service] Hotel found with id [{}].", id))
+                .doOnError(error -> log.error("[hotel-service] [service] Error finding hotel by id [{}].", id, error));
+
     }
 
     public Flux<HotelDTO> findAll() {
-        log.info("[hotel-service] [service] finding all hotels.");
+        log.info("[hotel-service] [service] Retrieving all hotels.");
 
-        return repository.findAll().map(hotelEntityToHotelDTO::map);
+        return repository.findAll()
+                .map(hotelEntityToHotelDTO::map)
+                .doOnComplete(() -> log.info("[hotel-service] [service] All hotels retrieved."))
+                .doOnError(error -> log.error("[hotel-service] [service] Error retrieving all hotels.", error));
+
     }
 
     public Mono<Void> deleteHotel(String id) {
-        log.info(String.format("[hotel-service] [service] deleting hotel with id [%s].", id));
-        return repository.deleteById(id);
+        log.info("[hotel-service] [service] Deleting hotel with id [{}].", id);
+        return repository.deleteById(id)
+                .doOnSuccess(v -> log.info("[hotel-service] [service] Hotel deleted with id [{}].", id))
+                .doOnError(error -> log.error("[hotel-service] [service] Error deleting hotel with id [{}].", id, error));
+
     }
 
-    public Flux<Hotel> findHotelsByCriteria(HotelSearchCriteriaDTO criteria) {
+    public Flux<HotelDTO> findHotelsByCriteria(HotelSearchCriteriaDTO criteria) {
         log.info(String.format("[hotel-service] [service] searching hotels with criteria [%s].", criteria));
-        return customHotelRepository.searchHotels(criteria);
+        return customHotelRepository.searchHotels(criteria)
+                .map(hotelEntityToHotelDTO::map)
+                .doOnComplete(() -> log.info("[hotel-service] [service] Search completed."))
+                .doOnError(error -> log.error("[hotel-service] [service] Error searching hotels with criteria [{}].", criteria, error));
+
     }
 
     public Mono<HotelDTO> updateHotelAverageRating(String id) {
         log.info(String.format("[hotel-service] [service] updating hotel with id [%s] average rating.", id));
 
         return calculateAverageRating(id).flatMap(averageRating ->
-                repository.findById(id).flatMap(hotel -> {
-                    hotel.setAverageRating(averageRating);
-                    return repository.save(hotel);})
-        ).map(hotelEntityToHotelDTO::map);
+                        repository.findById(id).flatMap(hotel -> {
+                            hotel.setAverageRating(averageRating);
+                            return repository.save(hotel);
+                        }))
+                .map(hotelEntityToHotelDTO::map)
+                .doOnSuccess(updatedHotel -> log.info("[hotel-service] [service] Updated average rating for hotel with id [{}].", id))
+                .doOnError(error -> log.error("[hotel-service] [service] Error updating average rating for hotel with id [{}].", id, error));
+
     }
 
     public Mono<HotelDTO> createHotelRating(String id, HotelReviewDTO reviewDTO) {
@@ -81,22 +104,24 @@ public class HotelService {
                             .build();
 
                     reviews.add(review);
-                    return repository.save(hotel.toBuilder()
-                            .reviews(reviews)
-                            .build());
+                    hotel.setReviews(reviews);
+                    return repository.save(hotel);
                 })
-                .flatMap(hotel -> updateHotelAverageRating(hotel.getId()));
+                .flatMap(hotel -> updateHotelAverageRating(hotel.getId()))
+                .doOnSuccess(updatedHotel -> log.info("[hotel-service] [service] Created hotel rating for hotel with id [{}].", id))
+                .doOnError(error -> log.error("[hotel-service] [service] Error creating hotel rating for hotel with id [{}].", id, error));
+
     }
 
     private Mono<Double> calculateAverageRating(String id) {
         return repository.findById(id).flatMap(hotel -> {
-                    List<HotelReview> reviews = hotel.getReviews();
-                    if (isEmpty(reviews)) {
-                        return Mono.just(0.0);
-                    }
-                    double sum = reviews.stream().mapToDouble(HotelReview::getStars).sum();
-                    double average = sum / reviews.size();
-                    return Mono.just(average);
+            List<HotelReview> reviews = hotel.getReviews();
+            if (isEmpty(reviews)) {
+                return Mono.just(0.0);
+            }
+            double sum = reviews.stream().mapToDouble(HotelReview::getStars).sum();
+            double average = sum / reviews.size();
+            return Mono.just(average);
         });
     }
 

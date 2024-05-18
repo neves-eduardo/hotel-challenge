@@ -44,7 +44,7 @@ public class HotelController {
     }
 
     @PostMapping("/search")
-    public Flux<Hotel> findHotelsByCriteria(@RequestBody HotelSearchCriteriaDTO criteria) {
+    public Flux<HotelDTO> findHotelsByCriteria(@RequestBody HotelSearchCriteriaDTO criteria) {
         log.info(String.format("[hotel-service] [controller] received request to search hotels with criteria [%s].", criteria));
         return hotelService.findHotelsByCriteria(criteria);
     }

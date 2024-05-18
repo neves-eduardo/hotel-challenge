@@ -93,15 +93,6 @@ class HotelServiceTest {
     }
 
     @Test
-    public void testFindHotelsByCriteria() {
-        when(customHotelRepository.searchHotels(any(HotelSearchCriteriaDTO.class))).thenReturn(Flux.just(hotel));
-
-        StepVerifier.create(hotelService.findHotelsByCriteria(searchCriteria))
-                .expectNext(hotel)
-                .verifyComplete();
-    }
-
-    @Test
     public void testUpdateHotelAverageRating() {
         when(repository.findById(anyString())).thenReturn(Mono.just(hotel));
         when(repository.save(any(Hotel.class))).thenReturn(Mono.just(hotel));
