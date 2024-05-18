@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18a38c54-f965-4c70-8033-eb8bea173a05" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/challange.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/hotel-service.main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotel-service/src/main/java/com/neves/eduardo/desafio/hotelservice/converter/HotelDTOToHotelEntityConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-service/src/main/java/com/neves/eduardo/desafio/hotelservice/converter/HotelDTOToHotelEntityConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotel-service/src/main/java/com/neves/eduardo/desafio/hotelservice/dto/HotelRoomDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-service/src/main/java/com/neves/eduardo/desafio/hotelservice/dto/HotelRoomDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotel-service/src/main/java/com/neves/eduardo/desafio/hotelservice/entity/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-service/src/main/java/com/neves/eduardo/desafio/hotelservice/entity/Hotel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotel-service/src/main/java/com/neves/eduardo/desafio/hotelservice/entity/HotelRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-service/src/main/java/com/neves/eduardo/desafio/hotelservice/entity/HotelRoom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotel-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comparasion-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/comparasion-service/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-service/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/reservation-service/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,7 +254,23 @@
       <option name="project" value="LOCAL" />
       <updated>1716001470372</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feature: implementing basic reservation CRUD">
+      <option name="closed" value="true" />
+      <created>1716009434586</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1716009434586</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feature: implementing basic reservation CRUD">
+      <option name="closed" value="true" />
+      <created>1716009447201</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1716009447201</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -286,7 +290,8 @@
     <MESSAGE value="feature: adding rating system" />
     <MESSAGE value="feature: adding average rating searching" />
     <MESSAGE value="feature: cleaning imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: cleaning imports" />
+    <MESSAGE value="feature: implementing basic reservation CRUD" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: implementing basic reservation CRUD" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
