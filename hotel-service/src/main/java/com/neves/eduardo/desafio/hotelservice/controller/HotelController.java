@@ -3,7 +3,6 @@ package com.neves.eduardo.desafio.hotelservice.controller;
 import com.neves.eduardo.desafio.hotelservice.dto.HotelDTO;
 import com.neves.eduardo.desafio.hotelservice.dto.HotelReviewDTO;
 import com.neves.eduardo.desafio.hotelservice.dto.HotelSearchCriteriaDTO;
-import com.neves.eduardo.desafio.hotelservice.entity.Hotel;
 import com.neves.eduardo.desafio.hotelservice.service.HotelService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

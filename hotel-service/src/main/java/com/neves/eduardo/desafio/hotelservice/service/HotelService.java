@@ -81,13 +81,13 @@ public class HotelService {
         log.info(String.format("[hotel-service] [service] updating hotel with id [%s] average rating.", id));
 
         return calculateAverageRating(id).flatMap(averageRating ->
-                        repository.findById(id).flatMap(hotel -> {
-                            hotel.setAverageRating(averageRating);
-                            return repository.save(hotel);
-                        }))
-                .map(hotelEntityToHotelDTO::map)
-                .doOnSuccess(updatedHotel -> log.info("[hotel-service] [service] Updated average rating for hotel with id [{}].", id))
-                .doOnError(error -> log.error("[hotel-service] [service] Error updating average rating for hotel with id [{}].", id, error));
+                repository.findById(id).flatMap(hotel -> {
+                    hotel.setAverageRating(averageRating);
+                    return repository.save(hotel);
+                })
+        ).map(hotelEntityToHotelDTO::map)
+                    .doOnSuccess(updatedHotel -> log.info("[hotel-service] [service] Updated average rating for hotel with id [{}].", id))
+                    .doOnError(error -> log.error("[hotel-service] [service] Error updating average rating for hotel with id [{}].", id, error));
 
     }
 
@@ -104,13 +104,11 @@ public class HotelService {
                             .build();
 
                     reviews.add(review);
-                    hotel.setReviews(reviews);
-                    return repository.save(hotel);
+                    return repository.save(hotel.toBuilder()
+                            .reviews(reviews)
+                            .build());
                 })
-                .flatMap(hotel -> updateHotelAverageRating(hotel.getId()))
-                .doOnSuccess(updatedHotel -> log.info("[hotel-service] [service] Created hotel rating for hotel with id [{}].", id))
-                .doOnError(error -> log.error("[hotel-service] [service] Error creating hotel rating for hotel with id [{}].", id, error));
-
+                .flatMap(hotel -> updateHotelAverageRating(hotel.getId()));
     }
 
     private Mono<Double> calculateAverageRating(String id) {
