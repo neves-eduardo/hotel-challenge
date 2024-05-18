@@ -4,11 +4,27 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/comparasion-service" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/comparasion-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/hotel-service" />
         <option name="gradleJvm" value="17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/hotel-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/reservation-service" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/reservation-service" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -12,7 +12,6 @@ import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 @Mapper(componentModel = "spring")
 public interface HotelDTOToHotelEntityConverter {
 
-
     @Mapping(target = "location", source = "hotelDTO.location", qualifiedByName = "toCoordinates")
     Hotel map(HotelDTO hotelDTO);
 

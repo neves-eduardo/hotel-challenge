@@ -14,10 +14,10 @@ import java.util.List;
 @AllArgsConstructor
 public class HotelRoomDTO {
 
+    private String id;
     private String type;
     private Integer capacity;
     private BigDecimal price;
-    private List<HotelRoomAvailabilityDTO> availability;
     private List<String> roomAmenities;
 
 }
