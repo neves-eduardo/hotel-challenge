@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18a38c54-f965-4c70-8033-eb8bea173a05" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/comparasion-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/comparasion-service/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotel-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-service/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reservation-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/reservation-service/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_classmate_1_6_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_el_10_1_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hibernate_validator_hibernate_validator_8_0_1_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jboss_logging_jboss_logging_3_5_3_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_validation_3_2_5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/hotel-service.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/hotel-service.test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/reservationservice.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/reservationservice.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/reservationservice.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/reservationservice.test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reservation-service/src/main/java/com/neves/eduardo/desafio/reservationservice/dto/hotel/HotelDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/reservation-service/src/main/java/com/neves/eduardo/desafio/reservationservice/dto/hotel/HotelDTO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +58,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -76,14 +85,20 @@
     "Docker.hotel-service/Dockerfile.executor": "Run",
     "Gradle.Build hotel-service.executor": "Run",
     "Gradle.Download Sources.executor": "Run",
+    "Gradle.HotelServiceTest.executor": "Run",
+    "Gradle.HotelServiceTest.testCreateHotelRating.executor": "Run",
+    "Gradle.HotelServiceTest.testFindHotelsByCriteria.executor": "Debug",
     "Gradle.Tests in 'hotel-service'.executor": "Run",
-    "Gradle.hotel-service [:HotelServiceApplication.main()].executor": "Run",
+    "Gradle.hotel-service [:HotelServiceApplication.main()].executor": "Debug",
     "Gradle.hotel-service [build].executor": "Run",
     "Gradle.hotel-service [clean build].executor": "Run",
     "Gradle.hotel-service [clean].executor": "Run",
     "Gradle.reservation-service [:ReservationserviceApplication.main()].executor": "Debug",
     "Gradle.reservationservice [:ReservationserviceApplication.main()].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
@@ -96,11 +111,17 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.neves.eduardo.desafio.reservationservice.dto.hotel" />
       <recent name="com.neves.eduardo.desafio.reservationservice.repository" />
       <recent name="com.neves.eduardo.desafio.reservationservice.dto" />
       <recent name="com.neves.eduardo.desafio.hotelservice.dto" />
       <recent name="com.neves.eduardo.desafio.hotelservice.entity" />
-      <recent name="com.neves.eduardo.desafio.hotelservice.converter" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.neves.eduardo.desafio.hotelservice.service" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -136,7 +157,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="hotel-service [clean build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="HotelServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/hotel-service" />
@@ -147,16 +168,65 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="clean" />
-            <option value="build" />
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.neves.eduardo.desafio.hotelservice.service.HotelServiceTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="HotelServiceTest.testCreateHotelRating" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/hotel-service" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.neves.eduardo.desafio.hotelservice.service.HotelServiceTest.testCreateHotelRating&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="HotelServiceTest.testFindHotelsByCriteria" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/hotel-service" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.neves.eduardo.desafio.hotelservice.service.HotelServiceTest.testFindHotelsByCriteria&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
@@ -171,29 +241,13 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="hotel-service/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
-      <deployment type="dockerfile">
-        <settings>
-          <option name="sourceFilePath" value="hotel-service/Dockerfile" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.HotelServiceTest.testFindHotelsByCriteria" />
+        <item itemvalue="Gradle.HotelServiceTest" />
+        <item itemvalue="Gradle.HotelServiceTest.testCreateHotelRating" />
         <item itemvalue="Application.ReservationserviceApplication" />
         <item itemvalue="Application.HotelServiceApplication" />
-        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
-        <item itemvalue="Gradle.hotel-service [clean build]" />
-        <item itemvalue="Docker.hotel-service/Dockerfile" />
       </list>
     </recent_temporary>
   </component>
@@ -270,7 +324,47 @@
       <option name="project" value="LOCAL" />
       <updated>1716009447201</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="chore: adding gitignore">
+      <option name="closed" value="true" />
+      <created>1716009772018</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1716009772018</updated>
+    </task>
+    <task id="LOCAL-00010" summary="chore: adding logging">
+      <option name="closed" value="true" />
+      <created>1716011388238</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1716011388238</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat: improving log and adding basic error handling">
+      <option name="closed" value="true" />
+      <created>1716058039126</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1716058039126</updated>
+    </task>
+    <task id="LOCAL-00012" summary="wip: error handling">
+      <option name="closed" value="true" />
+      <created>1716066422520</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1716066422520</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feature: implementing reservation feature">
+      <option name="closed" value="true" />
+      <created>1716083586268</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1716083586268</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -291,29 +385,29 @@
     <MESSAGE value="feature: adding average rating searching" />
     <MESSAGE value="feature: cleaning imports" />
     <MESSAGE value="feature: implementing basic reservation CRUD" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature: implementing basic reservation CRUD" />
+    <MESSAGE value="chore: adding gitignore" />
+    <MESSAGE value="chore: adding logging" />
+    <MESSAGE value="feat: improving log and adding basic error handling" />
+    <MESSAGE value="wip: error handling" />
+    <MESSAGE value="feature: implementing reservation feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature: implementing reservation feature" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/hotel-service/src/main/java/com/neves/eduardo/desafio/hotelservice/service/HotelService.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/hotel-service/src/main/java/com/neves/eduardo/desafio/hotelservice/service/HotelService.java</url>
-          <line>30</line>
+          <line>34</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/hotel-service/src/main/java/com/neves/eduardo/desafio/hotelservice/controller/HotelController.java</url>
-          <line>36</line>
+          <line>41</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/hotel-service/src/main/java/com/neves/eduardo/desafio/hotelservice/service/HotelService.java</url>
-          <line>43</line>
+          <line>67</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -330,6 +424,52 @@
           <url>file://$PROJECT_DIR$/hotel-service/src/main/java/com/neves/eduardo/desafio/hotelservice/repository/CustomHotelRepository.java</url>
           <line>20</line>
           <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/hotel-service/src/main/java/com/neves/eduardo/desafio/hotelservice/controller/HotelController.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/reservation-service/src/main/java/com/neves/eduardo/desafio/reservationservice/service/ReservationService.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/reservation-service/src/main/java/com/neves/eduardo/desafio/reservationservice/service/ReservationService.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/reservation-service/src/main/java/com/neves/eduardo/desafio/reservationservice/controller/ReservationController.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/reservation-service/src/main/java/com/neves/eduardo/desafio/reservationservice/service/ReservationService.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/reservation-service/src/main/java/com/neves/eduardo/desafio/reservationservice/service/ReservationService.java</url>
+          <line>36</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/reservation-service/src/main/java/com/neves/eduardo/desafio/reservationservice/service/ReservationService.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/reservation-service/src/main/java/com/neves/eduardo/desafio/reservationservice/service/ReservationService.java</url>
+          <line>54</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
