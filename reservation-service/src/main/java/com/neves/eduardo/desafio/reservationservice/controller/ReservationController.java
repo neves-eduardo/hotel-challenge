@@ -2,6 +2,7 @@ package com.neves.eduardo.desafio.reservationservice.controller;
 
 import com.neves.eduardo.desafio.reservationservice.dto.ReservationDTO;
 import com.neves.eduardo.desafio.reservationservice.service.ReservationService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -15,7 +16,7 @@ public class ReservationController {
     private final ReservationService service;
 
     @PostMapping
-    public Mono<ReservationDTO> createReservation(@RequestBody ReservationDTO reservationDTO) {
+    public Mono<ReservationDTO> createReservation(@Valid @RequestBody ReservationDTO reservationDTO) {
         return service.create(reservationDTO);
     }
 
