@@ -50,6 +50,15 @@ public class ReservationService {
                 .doOnError(error -> log.error("[reservation-service] [service] Error creating reservation.", error));
     }
 
+    public Mono<ReservationDTO> update(ReservationDTO reservationDTO) {
+        return saveReservation(reservationDTO);
+    }
+
+    public Mono<ReservationDTO> findById(String id) {
+        return repository.findById(id)
+                .map(reservationEntityToReservationDTO::map);
+    }
+
     public Mono<Void> deleteReservation(String id) {
         log.info("[reservation-service] [service] Deleting reservation with id [{}].", id);
         return repository.deleteById(id);
