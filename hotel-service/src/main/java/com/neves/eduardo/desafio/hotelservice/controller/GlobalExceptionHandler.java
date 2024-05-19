@@ -1,7 +1,7 @@
-package com.neves.eduardo.desafio.reservationservice.controller;
+package com.neves.eduardo.desafio.hotelservice.controller;
 
-import com.neves.eduardo.desafio.reservationservice.exception.RoomNotAvailableException;
-import com.neves.eduardo.desafio.reservationservice.exception.RoomNotFoundException;
+import com.neves.eduardo.desafio.hotelservice.exception.HotelNotFoundException;
+import com.neves.eduardo.desafio.hotelservice.exception.HotelServiceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -22,14 +22,14 @@ public class GlobalExceptionHandler {
         return Mono.just(ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage));
     }
 
-    @ExceptionHandler(RoomNotFoundException.class)
-    public Mono<ResponseEntity<String>> handleRoomNotFoundException(RoomNotFoundException ex) {
-        return Mono.just(ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage()));
+    @ExceptionHandler(HotelServiceException.class)
+    public Mono<ResponseEntity<String>> handleHotelServiceException(HotelServiceException ex) {
+        return Mono.just(ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage()));
     }
 
-    @ExceptionHandler(RoomNotAvailableException.class)
-    public Mono<ResponseEntity<String>> handleRoomNotAvailableException(RoomNotAvailableException ex) {
-        return Mono.just(ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage()));
+    @ExceptionHandler(HotelNotFoundException.class)
+    public  Mono<ResponseEntity<String>> handleHotelServiceException(HotelNotFoundException ex) {
+        return Mono.just(ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage()));
     }
 
     @ExceptionHandler(Exception.class)
@@ -37,4 +37,5 @@ public class GlobalExceptionHandler {
     public Mono<ResponseEntity<String>> handleGenericException(Exception ex) {
         return Mono.just(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred"));
     }
+
 }
