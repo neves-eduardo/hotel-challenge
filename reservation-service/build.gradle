@@ -28,6 +28,8 @@ dependencies {
 	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 	implementation 'org.apache.commons:commons-lang3:3.14.0'
+	implementation 'org.apache.kafka:kafka-streams:3.7.0'
+	implementation 'org.springframework.kafka:spring-kafka'
 }
 
 tasks.named('test') {

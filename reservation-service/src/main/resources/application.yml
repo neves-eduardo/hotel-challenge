@@ -7,3 +7,9 @@ spring:
   data:
     mongodb:
       uri: mongodb://admin:admin@localhost:27017/hotel-challenge?authSource=admin
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: my-group
+      auto-offset-reset: earliest
+      topic: reservation-notification
