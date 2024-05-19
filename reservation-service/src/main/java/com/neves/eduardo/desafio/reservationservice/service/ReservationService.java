@@ -11,6 +11,7 @@ import com.neves.eduardo.desafio.reservationservice.exception.RoomNotAvailableEx
 import com.neves.eduardo.desafio.reservationservice.exception.RoomNotFoundException;
 import com.neves.eduardo.desafio.reservationservice.repository.ReservationRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -20,6 +21,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ReservationService {
 
     private final ReservationRepository repository;
@@ -28,6 +30,8 @@ public class ReservationService {
     private final ReservationEntityToReservationDTO reservationEntityToReservationDTO;
 
     public Mono<ReservationDTO> create(ReservationDTO reservationDTO) {
+        log.info("[reservation-service] [service] Creating a new reservation.");
+
         String hotelId = reservationDTO.getHotelId();
         String roomId = reservationDTO.getRoomId();
         LocalDateTime checkInDate = reservationDTO.getCheckInDate();
@@ -41,14 +45,18 @@ public class ReservationService {
                         return Mono.error(new RoomNotAvailableException("Room is not available"));
                     }
                     return saveReservation(reservationDTO);
-                });
+                })
+                .doOnSuccess(hotel -> log.info("[reservation-service] [service] Reservation created successfully"))
+                .doOnError(error -> log.error("[reservation-service] [service] Error creating reservation.", error));
     }
 
     public Mono<Void> deleteReservation(String id) {
+        log.info("[reservation-service] [service] Deleting reservation with id [{}].", id);
         return repository.deleteById(id);
     }
 
     public Flux<ReservationDTO> findAll() {
+        log.info("[hotel-service] [service] Retrieving all hotels.");
         return repository.findAll().map(reservationEntityToReservationDTO::map);
     }
 
