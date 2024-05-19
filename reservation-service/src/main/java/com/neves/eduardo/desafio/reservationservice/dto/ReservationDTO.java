@@ -18,6 +18,7 @@ public class ReservationDTO {
     private String roomId;
     private LocalDateTime checkInDate;
     private LocalDateTime checkOutDate;
-    private String status;
+    private ReservationStatusDTO status;
+    private ReservationPaymentDTO reservationPayment;
 
 }
