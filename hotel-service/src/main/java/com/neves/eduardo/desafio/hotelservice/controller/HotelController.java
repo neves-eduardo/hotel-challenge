@@ -4,6 +4,7 @@ import com.neves.eduardo.desafio.hotelservice.dto.HotelDTO;
 import com.neves.eduardo.desafio.hotelservice.dto.HotelReviewDTO;
 import com.neves.eduardo.desafio.hotelservice.dto.HotelSearchCriteriaDTO;
 import com.neves.eduardo.desafio.hotelservice.service.HotelService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,7 @@ public class HotelController {
     private final HotelService hotelService;
 
     @PostMapping
-    public Mono<HotelDTO> createHotel(@RequestBody HotelDTO hotel) {
+    public Mono<HotelDTO> createHotel(@Valid @RequestBody HotelDTO hotel) {
         log.info(String.format("[hotel-service] [controller] received hotel creation request. [%s]", hotel));
         return hotelService.create(hotel);
     }

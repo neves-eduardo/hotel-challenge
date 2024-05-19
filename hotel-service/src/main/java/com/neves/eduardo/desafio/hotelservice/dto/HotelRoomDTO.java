@@ -1,6 +1,5 @@
 package com.neves.eduardo.desafio.hotelservice.dto;
 
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,10 +19,10 @@ public class HotelRoomDTO {
     private String type;
     private List<String> roomAmenities;
 
-    @NotEmpty(message = "room.capacity is mandatory")
+    @NotNull
     private Integer capacity;
 
-    @NotNull(message = "room.price is mandatory")
+    @NotNull
     private BigDecimal price;
 
 }
