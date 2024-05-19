@@ -7,6 +7,8 @@ import com.neves.eduardo.desafio.reservationservice.dto.ReservationDTO;
 import com.neves.eduardo.desafio.reservationservice.dto.hotel.HotelDTO;
 import com.neves.eduardo.desafio.reservationservice.dto.hotel.HotelRoomDTO;
 import com.neves.eduardo.desafio.reservationservice.entity.Reservation;
+import com.neves.eduardo.desafio.reservationservice.exception.RoomNotAvailableException;
+import com.neves.eduardo.desafio.reservationservice.exception.RoomNotFoundException;
 import com.neves.eduardo.desafio.reservationservice.repository.ReservationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -36,7 +38,7 @@ public class ReservationService {
                 .flatMap(room -> checkRoomAvailability(hotelId, roomId, checkInDate, checkOutDate))
                 .flatMap(isAvailable -> {
                     if (!isAvailable) {
-                        return Mono.error(new RuntimeException("Room is not available"));
+                        return Mono.error(new RoomNotAvailableException("Room is not available"));
                     }
                     return saveReservation(reservationDTO);
                 });
@@ -54,7 +56,7 @@ public class ReservationService {
         return Mono.justOrEmpty(hotelDTO.getRooms().stream()
                         .filter(room -> room.getId().equals(roomId))
                         .findFirst())
-                .switchIfEmpty(Mono.error(new RuntimeException("Room not found")));
+                .switchIfEmpty(Mono.error(new RoomNotFoundException("Room not found")));
     }
 
     private Mono<Boolean> checkRoomAvailability(String hotelId, String roomId, LocalDateTime checkInDate, LocalDateTime checkOutDate) {
