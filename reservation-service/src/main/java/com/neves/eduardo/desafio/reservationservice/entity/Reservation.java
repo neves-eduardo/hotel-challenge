@@ -23,5 +23,6 @@ public class Reservation {
     private LocalDateTime checkInDate;
     private LocalDateTime checkOutDate;
     private String status;
+    private ReservationPayment reservationPayment;
 
 }
