@@ -31,7 +31,7 @@ public class HotelController {
     }
 
     @GetMapping("/{id}")
-    public Mono<HotelDTO> findHotel(String id) {
+    public Mono<HotelDTO> findHotel(@PathVariable String id) {
         log.info(String.format("[hotel-service] [controller] received request to find hotel with id. [%s]", id));
         return hotelService.find(id);
     }

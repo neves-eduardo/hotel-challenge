@@ -16,6 +16,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.UUID;
 
 import static org.springframework.util.CollectionUtils.isEmpty;
 
@@ -32,6 +33,8 @@ public class HotelService {
     public Mono<HotelDTO> create(HotelDTO hotelDTO) {
         log.info("[hotel-service] [service] Creating a new hotel.");
         Hotel hotelEntity = hotelDTOtoHotelEntityConverter.map(hotelDTO);
+
+        hotelEntity.getRooms().forEach(a -> a.setId(UUID.randomUUID().toString()));
 
         return repository.save(hotelEntity)
                 .map(hotelEntityToHotelDTO::map)

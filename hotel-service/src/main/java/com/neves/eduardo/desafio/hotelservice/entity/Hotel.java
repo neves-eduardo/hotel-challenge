@@ -20,9 +20,9 @@ public class Hotel {
     private String id;
     private String name;
     private HotelLocation location;
-    private List<HotelRoom> rooms;
     private List<String> amenities;
     private List<HotelReview> reviews;
     private Double averageRating;
+    private List<HotelRoom> rooms;
 
 }

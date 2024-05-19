@@ -1,23 +1,21 @@
-package com.neves.eduardo.desafio.hotelservice.entity;
+package com.neves.eduardo.desafio.reservationservice.dto.hotel;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.bson.types.ObjectId;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @Data
-@Builder(toBuilder = true)
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class HotelRoom {
+public class HotelRoomDTO {
 
     private String id;
-    private String type;
     private Integer capacity;
     private BigDecimal price;
-    private List<String> roomAmenities;
 
 }
