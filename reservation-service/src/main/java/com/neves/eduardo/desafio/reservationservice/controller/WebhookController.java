@@ -1,5 +1,7 @@
 package com.neves.eduardo.desafio.reservationservice.controller;
 
+import com.neves.eduardo.desafio.reservationservice.consumer.ReservationWebhookProducer;
+import com.neves.eduardo.desafio.reservationservice.dto.ReservationWebhookDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,13 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class WebhookController {
 
-    private final KafkaTemplate<String, String> kafkaTemplate;
-
-    private static final String TOPIC = "reservation-notification";
+    private final ReservationWebhookProducer producer;
 
     @PostMapping("/webhook")
-    public String publishMessage(@RequestBody() String message) {
-        kafkaTemplate.send(TOPIC, message);
+    public String publishMessage(@RequestBody ReservationWebhookDTO message) {
+        producer.sendMessage(message);
         return "Message published!";
     }
 
