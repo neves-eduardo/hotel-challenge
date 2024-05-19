@@ -25,7 +25,6 @@ public class ReservationService {
     private final ReservationDTOtoReservationEntity reservationDTOtoReservationEntity;
     private final ReservationEntityToReservationDTO reservationEntityToReservationDTO;
 
-
     public Mono<ReservationDTO> create(ReservationDTO reservationDTO) {
         String hotelId = reservationDTO.getHotelId();
         String roomId = reservationDTO.getRoomId();
@@ -41,6 +40,14 @@ public class ReservationService {
                     }
                     return saveReservation(reservationDTO);
                 });
+    }
+
+    public Mono<Void> deleteReservation(String id) {
+        return repository.deleteById(id);
+    }
+
+    public Flux<ReservationDTO> findAll() {
+        return repository.findAll().map(reservationEntityToReservationDTO::map);
     }
 
     private Mono<HotelRoomDTO> getRoomFromHotel(HotelDTO hotelDTO, String roomId) {
@@ -61,14 +68,6 @@ public class ReservationService {
         Reservation reservationEntity = reservationDTOtoReservationEntity.map(reservationDTO);
         return repository.save(reservationEntity)
                 .map(reservationEntityToReservationDTO::map);
-    }
-
-    public Mono<Void> deleteReservation(String id) {
-        return repository.deleteById(id);
-    }
-
-    public Flux<ReservationDTO> findAll() {
-        return repository.findAll().map(reservationEntityToReservationDTO::map);
     }
 
     private boolean datesOverlap(LocalDateTime existingCheckIn, LocalDateTime existingCheckOut, LocalDateTime newCheckIn, LocalDateTime newCheckOut) {
