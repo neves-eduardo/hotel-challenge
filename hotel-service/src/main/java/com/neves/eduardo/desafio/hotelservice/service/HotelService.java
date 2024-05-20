@@ -7,6 +7,7 @@ import com.neves.eduardo.desafio.hotelservice.dto.HotelReviewDTO;
 import com.neves.eduardo.desafio.hotelservice.dto.HotelSearchCriteriaDTO;
 import com.neves.eduardo.desafio.hotelservice.entity.Hotel;
 import com.neves.eduardo.desafio.hotelservice.entity.HotelReview;
+import com.neves.eduardo.desafio.hotelservice.exception.HotelNotFoundException;
 import com.neves.eduardo.desafio.hotelservice.repository.CustomHotelRepository;
 import com.neves.eduardo.desafio.hotelservice.repository.HotelRepository;
 import lombok.RequiredArgsConstructor;
@@ -47,7 +48,7 @@ public class HotelService {
 
         return repository.findById(id)
                 .map(hotelEntityToHotelDTO::map)
-                .switchIfEmpty(Mono.error(new RuntimeException("Hotel not found")))
+                .switchIfEmpty(Mono.error(new HotelNotFoundException("Hotel not found")))
                 .doOnSuccess(hotel -> log.info("[hotel-service] [service] Hotel found with id [{}].", id))
                 .doOnError(error -> log.error("[hotel-service] [service] Error finding hotel by id [{}].", id, error));
 
@@ -114,7 +115,7 @@ public class HotelService {
                 .flatMap(hotel -> updateHotelAverageRating(hotel.getId()));
     }
 
-    private Mono<Double> calculateAverageRating(String id) {
+    Mono<Double> calculateAverageRating(String id) {
         return repository.findById(id).flatMap(hotel -> {
             List<HotelReview> reviews = hotel.getReviews();
             if (isEmpty(reviews)) {

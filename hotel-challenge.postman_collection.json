@@ -1,0 +1,334 @@
+{
+	"info": {
+		"_postman_id": "82912809-7aae-4127-9bcb-324e76b238ef",
+		"name": "hotel-challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5565731"
+	},
+	"item": [
+		{
+			"name": "CREATE HOTEL",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"amenities\": [\r\n    \"string\"\r\n  ],\r\n  \"reviews\": [\r\n    {\r\n      \"stars\": 0,\r\n      \"message\": \"string\",\r\n      \"usedId\": \"string\",\r\n      \"createdAt\": \"2024-05-20T02:42:12.884Z\"\r\n    }\r\n  ],\r\n  \"name\": \"string\",\r\n  \"location\": {\r\n    \"city\": \"string\",\r\n    \"address\": \"string\",\r\n    \"country\": \"string\",\r\n    \"latitude\": 0,\r\n    \"longitude\": 0\r\n  },\r\n  \"rooms\": [\r\n    {\r\n      \"id\": \"string\",\r\n      \"type\": \"string\",\r\n      \"roomAmenities\": [\r\n        \"string\"\r\n      ],\r\n      \"capacity\": 0,\r\n      \"price\": 0\r\n    }\r\n  ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/hotels",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"hotels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL HOTELS",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/hotels",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"hotels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE A REVIEW",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"stars\": 0,\r\n  \"message\": \"string\",\r\n  \"usedId\": \"string\",\r\n  \"createdAt\": \"2024-05-20T02:45:29.340Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/hotels/:id/reviews",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"hotels",
+						":id",
+						"reviews"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SEARCH HOTELS BY CRITERIA",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"country\": \"string\",\r\n  \"city\": \"string\",\r\n  \"numberOfGuests\": 0,\r\n  \"amenities\": [\r\n    \"string\"\r\n  ],\r\n  \"hotelAvailabilityDateCriteria\": {\r\n    \"checkInDate\": \"2024-05-20T02:47:13.880Z\",\r\n    \"checkOutDate\": \"2024-05-20T02:47:13.880Z\"\r\n  },\r\n  \"hotelPriceSearchCriteria\": {\r\n    \"minimumPrice\": 0,\r\n    \"maxPrice\": 0\r\n  },\r\n  \"hotelReviewSearchCriteria\": {\r\n    \"averageRatingFrom\": 0,\r\n    \"averageRatingTo\": 0\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/hotels/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"hotels",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET HOTEL BY ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/hotels/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"hotels",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE HOTEL BY ID",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/hotels/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"hotels",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET RESERVATIONS",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8082/reservations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"reservations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE RESERVATION",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"hotelId\": \"664ab8b029f4260e054075f3\",\r\n  \"roomId\": \"1052f84d-bda8-4613-bee5-6d3f911ddc0a\",\r\n  \"checkInDate\": \"2024-05-20T01:26:32.767Z\",\r\n  \"checkOutDate\": \"2024-05-20T01:26:32.767Z\",\r\n  \"status\": \"PENDING\",\r\n  \"reservationPayment\": {\r\n    \"payerName\": \"string\",\r\n    \"payerDocument\": \"string\",\r\n    \"payerEmail\": \"string\",\r\n    \"payerPhone\": \"string\",\r\n    \"paymentMethod\": \"CASH\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/reservations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"reservations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE RESERVATION",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8082/reservations/664abbec1a8a2c542091468f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"reservations",
+						"664abbec1a8a2c542091468f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RESERVATION STATUS UPDATE",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"664aa6ee7c6cb537fbeef77d\",\r\n  \"status\": \"PAID\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/webhook",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"webhook"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

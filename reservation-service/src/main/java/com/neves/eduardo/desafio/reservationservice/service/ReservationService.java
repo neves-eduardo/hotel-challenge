@@ -69,27 +69,27 @@ public class ReservationService {
         return repository.findAll().map(reservationEntityToReservationDTO::map);
     }
 
-    private Mono<HotelRoomDTO> getRoomFromHotel(HotelDTO hotelDTO, String roomId) {
+    protected Mono<HotelRoomDTO> getRoomFromHotel(HotelDTO hotelDTO, String roomId) {
         return Mono.justOrEmpty(hotelDTO.getRooms().stream()
                         .filter(room -> room.getId().equals(roomId))
                         .findFirst())
                 .switchIfEmpty(Mono.error(new RoomNotFoundException("Room not found")));
     }
 
-    private Mono<Boolean> checkRoomAvailability(String hotelId, String roomId, LocalDateTime checkInDate, LocalDateTime checkOutDate) {
+    protected Mono<Boolean> checkRoomAvailability(String hotelId, String roomId, LocalDateTime checkInDate, LocalDateTime checkOutDate) {
         return repository.findByHotelIdAndRoomId(hotelId, roomId)
                 .filter(reservation -> datesOverlap(reservation.getCheckInDate(), reservation.getCheckOutDate(), checkInDate, checkOutDate))
                 .collectList()
                 .map(List::isEmpty);
     }
 
-    private Mono<ReservationDTO> saveReservation(ReservationDTO reservationDTO) {
+    protected Mono<ReservationDTO> saveReservation(ReservationDTO reservationDTO) {
         Reservation reservationEntity = reservationDTOtoReservationEntity.map(reservationDTO);
         return repository.save(reservationEntity)
                 .map(reservationEntityToReservationDTO::map);
     }
 
-    private boolean datesOverlap(LocalDateTime existingCheckIn, LocalDateTime existingCheckOut, LocalDateTime newCheckIn, LocalDateTime newCheckOut) {
+    protected boolean datesOverlap(LocalDateTime existingCheckIn, LocalDateTime existingCheckOut, LocalDateTime newCheckIn, LocalDateTime newCheckOut) {
         return (newCheckIn.isBefore(existingCheckOut) && newCheckOut.isAfter(existingCheckIn));
     }
 

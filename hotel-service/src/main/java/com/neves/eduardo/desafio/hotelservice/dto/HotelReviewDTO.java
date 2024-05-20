@@ -15,7 +15,6 @@ public class HotelReviewDTO {
 
     private Double stars;
     private String message;
-    private String usedId;
     private LocalDateTime createdAt;
 
 }
