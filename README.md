@@ -29,3 +29,12 @@ Implement a comprehensive log and metrics strategy to monitor system performance
 ![DesafioHotel drawio](https://github.com/neves-eduardo/hotel-challenge/assets/39205974/f0ce4d38-c5af-45c1-a341-a4dc1cc29c2e)
 
 ## Running the Project
+### Build the projects
+1. In the project directory, run the following:
+ cd .\hotel-service\
+./gradlew clean build
+ cd .\reservation-service\
+./gradlew clean build
+
+1. Run the docker-compose
+docker-compose up
