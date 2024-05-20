@@ -36,5 +36,7 @@ Implement a comprehensive log and metrics strategy to monitor system performance
  cd .\reservation-service\
 ./gradlew clean build
 
-1. Run the docker-compose
+2.Run the docker-compose
 docker-compose up
+### Import the Postman Collection to your personal Postman
+Use the provided json file in the root folder of the directory to get all the HTTP requests in one place. 
