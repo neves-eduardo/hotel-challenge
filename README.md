@@ -28,3 +28,4 @@ Implement a comprehensive log and metrics strategy to monitor system performance
 # My Solution
 ![DesafioHotel drawio](https://github.com/neves-eduardo/hotel-challenge/assets/39205974/f0ce4d38-c5af-45c1-a341-a4dc1cc29c2e)
 
+## Running the Project
