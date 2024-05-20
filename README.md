@@ -42,11 +42,24 @@ docker-compose up
 Use the provided json file in the root folder of the directory to get all the HTTP requests in one place. 
 You may perform the following actions:
 ### Using the APIs
-1. CREATE HOTEL
-2. GET ALL HOTELS/GET HOTEL BY ID
-3. CREATE A REVIEW FOR A HOTEL
-4. SEARCH A HOTEL BASED ON CERTAIN CRITERIA TO COMPARE IT WITH OTHERS
-5. DELETE HOTEL
-6. CREATE RESERVATION
-7. DELETE RESERVATION
-8. UPDATE A RESERVATION STATUS ASYNCHRONOUSLY
+#### 1. CREATE HOTEL
+To create a hotel, there are the following required fields:
+- name
+- location
+- rooms
+
+#### 2. GET ALL HOTELS/GET HOTEL BY ID
+#### 3. CREATE A REVIEW FOR A HOTEL
+#### 4. SEARCH A HOTEL BASED ON CERTAIN CRITERIA TO COMPARE IT WITH OTHERS
+#### 5. DELETE HOTEL
+#### 6. CREATE RESERVATION
+To create a reservation, there are the following required fields:
+- hotelId (must reference an existing hotel)
+- roomId (must reference an existing room in the hotel referenced above)
+- checkInDate
+- checkOutDate
+- status (PENDING, PAID, CONFIRMED, CANCELLED)
+- reservationPayment (All fields must me filled)
+#### 7. DELETE RESERVATION
+#### 8. UPDATE A RESERVATION STATUS ASYNCHRONOUSLY
+To notify about a Reservation status update, send a webhook with the reservation id and the status (PENDING, PAID, CONFIRMED, CANCELLED)
