@@ -10,7 +10,7 @@ public class WebClientConfig {
     @Bean
     public WebClient webClient() {
         return WebClient.builder()
-                .baseUrl("http://localhost:8080") // Replace with your actual base URL
+                .baseUrl("http://hotel-service:8081")
                 .build();
     }
 

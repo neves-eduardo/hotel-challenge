@@ -1,9 +1,13 @@
 server:
-  port : 8080
+  port: 8081
 
 spring:
   application:
     name: hotel-service
   data:
     mongodb:
-      uri: mongodb://admin:admin@localhost:27017/hotel-challenge?authSource=admin
+      uri: mongodb://admin:admin@mongo:27017/hotel-challenge?authSource=admin
+springdoc:
+  swagger-ui:
+    disable-swagger-default-url: true
+    url: /v3/api-docs
