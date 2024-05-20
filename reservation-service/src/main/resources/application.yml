@@ -1,15 +1,19 @@
 server:
-  port : 8082
+  port: 8082
 
 spring:
   application:
     name: reservation-service
   data:
     mongodb:
-      uri: mongodb://admin:admin@localhost:27017/hotel-challenge?authSource=admin
+      uri: mongodb://admin:admin@mongo:27017/hotel-challenge?authSource=admin
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: kafka0:9092
     consumer:
       group-id: my-group
       auto-offset-reset: earliest
       topic: reservation-notification
+  springdoc:
+    swagger-ui:
+      disable-swagger-default-url: true
+      url: /v3/api-docs

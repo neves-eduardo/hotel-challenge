@@ -8,7 +8,8 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: admin
     ports:
       - "27017:27017"
-    network_mode: "host"
+    expose:
+      - "27017"
 
   zookeeper:
     image: "confluentinc/cp-zookeeper:latest"
@@ -16,9 +17,9 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
     ports:
-      - '8080:8080'
       - '2181:2181'
-    network_mode: "host"
+    expose:
+      - "2181"
 
   kafka0:
     image: "confluentinc/cp-enterprise-kafka:latest"
@@ -27,17 +28,20 @@ services:
       - '29094:29094'
     depends_on:
       - zookeeper
+    expose:
+      - "9092"
+      - "29094:29094"
+      - "29092"
     environment:
       KAFKA_BROKER_ID: 0
-      KAFKA_ZOOKEEPER_CONNECT: localhost:2181
-      KAFKA_LISTENERS: LISTENER_BOB://localhost:29092,LISTENER_FRED://localhost:9092,LISTENER_ALICE://localhost:29094
-      KAFKA_ADVERTISED_LISTENERS: LISTENER_BOB://localhost:29092,LISTENER_FRED://localhost:9092,LISTENER_ALICE://never-gonna-give-you-up:29094
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENERS: LISTENER_BOB://kafka0:29092,LISTENER_FRED://kafka0:9092,LISTENER_ALICE://kafka0:29094
+      KAFKA_ADVERTISED_LISTENERS: LISTENER_BOB://kafka0:29092,LISTENER_FRED://kafka0:9092,LISTENER_ALICE://kafka0:29094
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_BOB:PLAINTEXT,LISTENER_FRED:PLAINTEXT,LISTENER_ALICE:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_BOB
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 100
-    network_mode: "host"
 
   hotel-service:
     build:
@@ -47,26 +51,26 @@ services:
         - JAR_FILE=hotel-service/build/libs/hotel-service-0.0.1-SNAPSHOT.jar
     ports:
       - "8081:8081"
+    expose:
+      - "8081"
     volumes:
       - /tmp
     depends_on:
       - kafka0
       - zookeeper
-    network_mode: "host"
-        
+
   reservation-service:
     build:
       context: .
-      dockerfile: hotel-service/Dockerfile
+      dockerfile: reservation-service/Dockerfile
       args:
-        - JAR_FILE=reservation-service/build/libs/reservationservice-0.0.1-SNAPSHOT.jar
+        - JAR_FILE=reservation-service/build/libs/reservation-service-0.0.1-SNAPSHOT.jar
     ports:
       - "8082:8082"
     expose:
-      - '8081'
+      - "8082"
     volumes:
       - /tmp
     depends_on:
       - kafka0
       - zookeeper
-    network_mode: "host"
