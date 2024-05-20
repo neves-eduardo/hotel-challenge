@@ -30,13 +30,23 @@ Implement a comprehensive log and metrics strategy to monitor system performance
 
 ## Running the Project
 ### Build the projects
-1. In the project directory, run the following:
+#### 1. In the project directory, run the following:
  cd .\hotel-service\
 ./gradlew clean build
  cd .\reservation-service\
 ./gradlew clean build
 
-2.Run the docker-compose
+#### 2. Run the docker-compose
 docker-compose up
 ### Import the Postman Collection to your personal Postman
 Use the provided json file in the root folder of the directory to get all the HTTP requests in one place. 
+You may perform the following actions:
+### Using the APIs
+1. CREATE HOTEL
+2. GET ALL HOTELS/GET HOTEL BY ID
+3. CREATE A REVIEW FOR A HOTEL
+4. SEARCH A HOTEL BASED ON CERTAIN CRITERIA TO COMPARE IT WITH OTHERS
+5. DELETE HOTEL
+6. CREATE RESERVATION
+7. DELETE RESERVATION
+8. UPDATE A RESERVATION STATUS ASYNCHRONOUSLY
